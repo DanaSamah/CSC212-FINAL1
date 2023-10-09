@@ -11,22 +11,12 @@ public class  linkedlist<T> implements List<T>{
 
 		public Node<T>head;  
 		public Node<T>current;  
-		
+		private int size=0;
 		public linkedlist() { 
 			System.out.println('n');
 		head=current=null; 
 		} 
-		public int size() {
-			Node<T> temp=head;
-			int count=0;
 		
-			if(head==null) {
-				return 0;
-			}
-			else { while(temp.next!=null) {
-				count++;
-				temp=temp.next;}}
-			return count;}
 		
 		public boolean empty() { 
 		return head==null;//1 
@@ -81,12 +71,14 @@ public boolean exist(T E) {
 		Node<T> con = new Node(Con); 
 		Contact CastCon = ((Contact)con.data);
 		if(!(exist(Con)))
-		if(head==null)
+		if(head==null) {
 		head = current = con;
+		size++;}
 		else {
 		if(CastCon.compareTo(((Contact)head.data)) < 0) {
 		con.next=head;
 		head=con;
+		size++;
 		}
 		else {
 		Node<T> prev = null;
@@ -96,6 +88,7 @@ public boolean exist(T E) {
 		prev.next = con;
 		con.next = temp;
 		current = con;
+		size++;
 		break;
 		}
 		prev = temp;
@@ -118,15 +111,17 @@ public boolean exist(T E) {
 				if(((Contact) head.getData()).getName().equals(name)) {
 					head=head.getNext();
 					findFirst();
+					size--;
 					System.out.println("Delete succecfully");
 				}
 		else {//3-Contact is in the middle
 			 findFirst();
 			 Node<T> temp=head;
-				 while(current.next!=null) {
+				 for(int i=0;i<size;i++) {
 						if(((Contact) current.getData()).getName().equals(name)) {
 							temp.setNext(current.getNext());
 							System.out.println("Contact has deleted!");
+							size--;
 								return;
 		
 								}
@@ -138,6 +133,7 @@ public boolean exist(T E) {
 					   while(L.next!=current) {
 						  L=L.getNext();}
 					 L.setNext(null);
+					 size++;
 						  }}
 			
 				 
