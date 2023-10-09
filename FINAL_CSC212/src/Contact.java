@@ -76,9 +76,9 @@ public class Contact implements comparable<String> {
 	}
 	public String toString() {
 	return "Contact [name=" + name + ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress
-	+ ", address=" + address + ", birthday=" + birthday + ", notes=" + notes + "]";
+	+ ", address=" + address + ", birthday=" + birthday + ", notes=" + notes + "]" + ",";
 	}
 	}
 	
 
-}
+
