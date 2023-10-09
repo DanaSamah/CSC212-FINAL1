@@ -9,9 +9,10 @@ public class  linkedlist<T> implements List<T>{
 
 		public Node<T>head;  
 		public Node<T>current;  
+		int size;
 		
 		public linkedlist() { 
-			System.out.println('n');
+			size=0;
 		head=current=null; 
 		} 
 		public int size() {
@@ -79,21 +80,24 @@ public boolean exist(T E) {
 		Node<T> con = new Node(Con); 
 		Contact CastCon = ((Contact)con.data);
 		if(!(exist(Con)))
-		if(head==null)
+		if(head==null) {
 		head = current = con;
+		size++;}
 		else {
 		if(CastCon.compareTo(((Contact)head.data)) < 0) {
 		con.next=head;
 		head=con;
+		size++;
 		}
 		else {
 		Node<T> prev = null;
 		Node<T> temp = head;
-		while(temp!=null) {
+		for(int i=0;i<size;i++) {
 		if(CastCon.compareTo(((Contact)temp.data))< 0){
 		prev.next = con;
 		con.next = temp;
 		current = con;
+		size++;
 		break;
 		}
 		prev = temp;
@@ -116,6 +120,7 @@ public boolean exist(T E) {
 				if(((Contact) head.getData()).getName().equals(name)) {
 					head=head.getNext();
 					findFirst();
+					size--;
 					System.out.println("Delete succecfully");
 				}
 		else {//3-Contact is in the middle
@@ -124,6 +129,7 @@ public boolean exist(T E) {
 				 while(current.next!=null) {
 						if(((Contact) current.getData()).getName().equals(name)) {
 							temp.setNext(current.getNext());
+							size--;
 							System.out.println("Contact has deleted!");
 								return;
 		
@@ -133,9 +139,11 @@ public boolean exist(T E) {
 							current=current.getNext();}}
 				if( last()){// 4-Contact is the last one
 					 Node<T> L=head;
-					   while(L.next!=current) {
-						  L=L.getNext();}
+					   for(int i=0; i<size;i++) {
+						  L=L.getNext();
+						  }
 					 L.setNext(null);
+					 size--;
 						  }}
 			
 				 
