@@ -11,6 +11,8 @@ public class  linkedlist<T> implements List<T>{
 		public Node<T>current;  
 		private int size;
 		
+	
+
 		public linkedlist() { 
 			size=0;
 		head=current=null; 
@@ -103,7 +105,7 @@ public boolean exist(T E) {
  public void delete() {
 	System.out.println("Enter name to delete from contact:");
 	String name=input.next();
-		if(empty()) {//1-linkedlist is empty
+		if(size==0) {//1-linkedlist is empty
 			System.out.println("the contacts is empty, nothing to delete");
                return;}
 			else {//2- the contact is in the head
@@ -116,35 +118,21 @@ public boolean exist(T E) {
 		else {//3-Contact is in the middle
 			 findFirst();
 			 Node<T> temp=head;
-				 for(int i=0;i<size;i++) {
-						if(((Contact) current.getData()).getName().equals(name)) {
+			 T data=current.getData();
+				 for(int i=0;i<=size;i++) {
+						if( current.getData.getName.equals(name)) {
 							temp.setNext(current.getNext());
-							size--;
 							System.out.println("Contact has deleted!");
-							size--;
+							
 								return;
 		
 								}
 						else {
 							temp=current;
 							current=current.getNext();}}
-				if( last()){// 4-Contact is the last one
-					 Node<T> L=head;
-					   for(int i=0; i<size;i++) {
-						  L=L.getNext();
-						  }
-					 L.setNext(null);
-<<<<<<< HEAD
-					 size++;
-=======
-					 size--;
->>>>>>> branch 'main' of https://github.com/DanaSamah/CSC212-FINAL1.git
-						  }}
-			
-				 
-			 }
+				}
 			System.out.println("Can't found the name to delete");
-		}
+		}}
 		
 		//search 
 		public Contact search_name() {
