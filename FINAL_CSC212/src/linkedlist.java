@@ -152,7 +152,7 @@ public boolean exist(T E) {
 		}
 		
 		//search 
-		public Contact search_name() {
+		/*public Contact search_name() {
 			System.out.println("Enter the name: ");
 			String name= input.next();
 			current=head;
@@ -302,13 +302,13 @@ public boolean exist(T E) {
 						LL_birthday.add(tmp);}
 			}
 				return LL_birthday;
-			}/*
+			}*/
 //-----------------------------------------------------------------
-			@Override
+			/*@Override
 			public Contact search() {
 				// TODO Auto-generated method stub
 				return null;
-			}
+			}*/
 			
 			/*public Contact searchname(String n){
 				if(empty())
