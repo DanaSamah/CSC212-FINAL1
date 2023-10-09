@@ -152,8 +152,7 @@
 				for(int i=0 ; i<= contact.size ; i++) {
 					if(contact.retrieve().getBirthday().equalsIgnoreCase(birthday)) {
 						System.out.println(contact.retrieve().toString());
-						System.out.println(contact.retrieve().toString());
-						contact.findNext();
+												contact.findNext();
 
 						}
 					}}

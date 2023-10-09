@@ -214,7 +214,7 @@ public boolean exist(T E) {
 //-----------------------------------------------------------------	
 			public linkedlist<T> search_birthday(){
 				linkedlist LL_birthday= new linkedlist();
-				System.out.println("Enter the birthday: ");
+				System.out.println("Enter the birthday:   ");
 				String birthday= input.next();
 				current=head;
 				
