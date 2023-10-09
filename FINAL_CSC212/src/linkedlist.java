@@ -16,6 +16,18 @@ public class  linkedlist<T> implements List<T>{
 			System.out.println('n');
 		head=current=null; 
 		} 
+		public int size() {
+			Node<T> temp=head;
+			int count=0;
+		
+			if(head==null) {
+				return 0;
+			}
+			else { while(temp.next!=null) {
+				count++;
+				temp=temp.next;}}
+			return count;}
+		
 		public boolean empty() { 
 		return head==null;//1 
 		//bigO(1) 
