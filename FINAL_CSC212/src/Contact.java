@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Contact implements comparable<String> {
+	
 	// I removed the generic from contact
 	private String name;
 	private String phoneNumber; //String or int

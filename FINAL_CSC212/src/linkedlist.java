@@ -9,13 +9,23 @@ public class  linkedlist<T> implements List<T>{
 
 		public Node<T>head;  
 		public Node<T>current;  
-		private int size;
+		int size;
 		
 		public linkedlist() { 
 			size=0;
 		head=current=null; 
 		} 
+		public int size() {
+			Node<T> temp=head;
+			int count=0;
 		
+			if(head==null) {
+				return 0;
+			}
+			else { while(temp.next!=null) {
+				count++;
+				temp=temp.next;}}
+			return count;}
 		
 		public boolean empty() { 
 		return head==null;//1 
@@ -116,12 +126,11 @@ public boolean exist(T E) {
 		else {//3-Contact is in the middle
 			 findFirst();
 			 Node<T> temp=head;
-				 for(int i=0;i<size;i++) {
+				 while(current.next!=null) {
 						if(((Contact) current.getData()).getName().equals(name)) {
 							temp.setNext(current.getNext());
 							size--;
 							System.out.println("Contact has deleted!");
-							size--;
 								return;
 		
 								}
@@ -134,11 +143,7 @@ public boolean exist(T E) {
 						  L=L.getNext();
 						  }
 					 L.setNext(null);
-<<<<<<< HEAD
-					 size++;
-=======
 					 size--;
->>>>>>> branch 'main' of https://github.com/DanaSamah/CSC212-FINAL1.git
 						  }}
 			
 				 
