@@ -3,8 +3,6 @@
 import java.util.*;
 import java.util.Scanner;
 
-
-
 public class  linkedlist<T> implements List<T>{
 		
 		Scanner input = new Scanner(System.in);
