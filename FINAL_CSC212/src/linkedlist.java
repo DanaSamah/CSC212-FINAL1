@@ -11,7 +11,7 @@ public class  linkedlist<T> implements List<T>{
 		public Node<T>current;  
 		private int size;
 		public linkedlist() { 
-	    size=0;
+	    System.out.print("Nada");
 		head=current=null; 
 		} 
 		
