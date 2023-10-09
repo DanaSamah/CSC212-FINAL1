@@ -52,8 +52,8 @@ public boolean exist(T E) {
 	while (current!= null) {
 		Contact a =((Contact)current.data);
 	
-		if(a.getName().equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
-			System.out.print("the contact is already exist " + "\n");
+	if(a.getName().equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
+		System.out.print("the contact is already exist " + "\n");
 		 }
 		findNext();
 	}
@@ -96,13 +96,124 @@ public boolean exist(T E) {
 
 		
 				
-		public void delete() {
-			if (current == head) {  
-	            head = head.next;  
-	        }}
+ public void delete() {
+	System.out.println("Enter name to delete from contact:");
+	String name=input.next();
+		if(empty()) {//1-linkedlist is empty
+			System.out.println("the contacts is empty, nothing to delete");
+               return;}
+			else {//2- the contact is in the head
+				if(((Contact) head.getData()).getName().equals(name)) {
+					head=head.getNext();
+					findFirst();
+					System.out.println("Delete succecfully");
+				}
+		else {//3-Contact is in the middle
+			 findFirst();
+			 Node<T> temp=head;
+				 while(current.next!=null) {
+						if(((Contact) current.getData()).getName().equals(name)) {
+							temp.setNext(current.getNext());
+							System.out.println("Contact has deleted!");
+								return;
+		
+								}
+						else {
+							temp=current;
+							current=current.getNext();}}
+				if( last()){// 4-Contact is the last one
+					 Node<T> L=head;
+					   while(L.next!=current) {
+						  L=L.getNext();}
+					 L.setNext(null);
+						  }}
+			
+				 
+			 }
+			System.out.println("Can't found the name to delete");
+		}
+		
+		//search 
+		public Contact search_name() {
+			System.out.println("Enter the name: ");
+			String name= input.next();
+			current=head;
+			while(current != null) {
+				//Node<T> tmp = current;
+			if(((Contact) current.data).getName().equals(name)) {
+				return ((Contact)current.data);}
+				
+			current=current.next;}
+
+			return null;
+		}	
+//---------------------------------------------------------------------
+		public Contact search_phone() {
+			
+			System.out.println("Enter the phone number: ");
+			String number= input.next();
+			current=head;
+			while(current != null) {
+				if(((Contact)current.data).getPhoneNumber().equals(number))
+					return ((Contact)current.data);
+				
+				current=current.next;}
+
+			return null;
+		}
+//----------------------------------------------------------------------------------
+		public linkedlist<T> search_email(){
+			linkedlist LL_email= new linkedlist();
+				System.out.println("Enter the E-mail: ");
+				String email= input.next();
+				current=head;
+				
+				while(current != null) {
+					if(((Contact) current.data).getEmailAddress().equals(email)) 
+						LL_email.add(current.data);
+					
+					current=current.next;
+				 
+					}return LL_email;
+		}
+			
+//-------------------------------------------------------------------------
+			public linkedlist<T> search_address(){
+				linkedlist LL_address= new linkedlist();
+				System.out.println("Enter the Address: ");
+				String address= input.next();
+				current=head;
+				
+				while(current != null) {
+					if(((Contact) current.data).getAddress().equals(address)) 
+						LL_address.add(current.data);
+						
+					current=current.next;
+				
+				}return LL_address;
+				}
+			
+//-----------------------------------------------------------------	
+			public linkedlist<T> search_birthday(){
+				linkedlist LL_birthday= new linkedlist();
+				System.out.println("Enter the birthday: ");
+				String birthday= input.next();
+				current=head;
+				
+				while(current!= null) {
+					//Node<T> tmp = current;
+					//Contact temp1 = ((Contact) tmp.data);
+					if (((Contact) current.data).getBirthday().equals(birthday)) 
+						LL_birthday.add(current.data);
+						
+					current=current.next;
+						
+			}
+				return LL_birthday;
+			}
 		//------------------------------------------------
 			
-		public Contact search_name() {
+		/*public Contact search_name() {
 			System.out.println("Enter the name: ");
 			String name= input.next();
 			current=head;
@@ -173,7 +284,7 @@ public boolean exist(T E) {
 						LL_birthday.add(tmp);}
 			}
 				return LL_birthday;
-			}
+			}/*
 //-----------------------------------------------------------------
 			@Override
 			public Contact search() {

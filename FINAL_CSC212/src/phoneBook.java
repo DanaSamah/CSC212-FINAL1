@@ -1,7 +1,8 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 public class phoneBook {
 public static void main(String[] args) { 
-	/*System.out.println("Please choose an option:\r\n"
+System.out.println("Please choose an option:\r\n"
 + "1. Add a contact\r\n"
 + "2. Search for a contact\r\n"
 + "3. Delete a contact\r\n"
@@ -15,13 +16,63 @@ boolean y = true;
 int x;
 do{
 x=input.nextInt();
+linkedlist<Contact> a1 = new linkedlist<Contact>();
 switch(x) {
 case 1:
 //add cotact
 break;
 case 2:
 //search contact
-break;
+	System.out.println("1. Name\r\n"
+			+ "2. Phone Number\r\n"
+			+ "3. Email Address\r\n"
+			+ "4. Address\r\n"
+			+ "5. Birthday ");
+	System.out.println("Enter search criteria: ");
+	 
+	int i;
+	i = input.nextInt();
+	switch(i) { //another switch for search
+		case 1: //by name
+			System.out.println(a1.search_name());
+			break;
+			
+		case 2: //phone
+			System.out.println(a1.search_phone());
+			break;
+
+		case 3: //email
+			linkedlist<Contact> a2 = a1.search_email();
+			a2.current=a2.head;
+			while (a2.current != null) {
+				System.out.println(a2.retrieve().toString());
+				a2.current = a2.current.next; }
+			//System.out.println(a1.search_email());
+			break;
+			
+		case 4: //address
+			linkedlist<Contact> a3 = a1.search_address();
+			a3.current=a3.head;
+			while (a3.current != null) {
+				System.out.println(a3.retrieve().toString());
+				a3.current = a3.current.next; }
+			//System.out.println(a1.search_address());
+			break;
+			
+		case 5: //birthday
+			linkedlist<Contact> a4 = a1.search_address();
+			a4.current=a4.head;
+			while (a4.current != null) {
+				System.out.println(a4.retrieve().toString());
+				a4.current = a4.current.next; }
+			//System.out.println(a1.search_birthday());
+			break;
+			
+		default:
+			System.out.println("Re-enter a correct number from 1-5");
+		}
+	break;
+
 case 3:
 //delete
 break;
@@ -43,29 +94,8 @@ default:
 System.out.println("Re-enter a correct number from 1-8 ");
 break;
 }
-}while(y);*/ 
-Contact a = new Contact("asma a","00","ss","sss","2000","as");
-Contact b = new Contact("basma","11","ss","sss","2000","as");
-Contact c = new Contact("anwar","22","ss","sss","2000","as");
-Contact z = new Contact("areej","33","ss","sss","2000","as");
-Contact e = new Contact("sara","44","ss","sss","2000","as");
-Contact d = new Contact("nora","55","ss","sss","2000","as");
-Contact w = new Contact("nada","66","ss","sss","2000","as");
-linkedlist<Contact> a1 = new linkedlist<Contact>();
-a1.add(b);
-a1.add(a);
-a1.add(c);
-a1.add(e);
-a1.add(d);
-a1.add(w);
-a1.add(z);
-a1.findFirst();
+}while(y);
 
-for (int i=0 ; i<10; i++) {
-System.out.println(a1.retrieve());
-a1.findNext();
-System.out.println("dana");
-}
 } } 
 
 
