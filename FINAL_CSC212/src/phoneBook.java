@@ -1,6 +1,7 @@
 	import java.util.LinkedList;
 	import java.util.Scanner;
 	public class phoneBook {
+		static Scanner input = new Scanner(System.in);
 		public static void main(String args[]) {
 			System.out.println("Please choose an option:\r\n"
 			+ "1. Add a contact\r\n"
@@ -11,7 +12,7 @@
 			+ "6. Print contacts by first name\r\n"
 			+ "7. Print all events alphabetically\r\n"
 			+ "8. Exit");
-			Scanner input = new Scanner(System.in);
+			//Scanner input = new Scanner(System.in);
 			boolean y = true;
 			int x;
 			do{
@@ -96,6 +97,85 @@
 			}
 			}while(y);
 			
-			} } 
+			} 
+		//search 
+		public static Contact search_name() {
+			System.out.println("Enter the name: ");
+			String name= input.next();
+			current=head;
+			while(current != null) {
+				//Node<T> tmp = current;
+			if(((Contact) current.data).getName().equals(name)) {
+				return ((Contact)current.data);}
+				
+			current=current.next;}
+
+			return null;
+		}	
+//---------------------------------------------------------------------
+		public Contact search_phone() {
+			
+			System.out.println("Enter the phone number: ");
+			String number= input.next();
+			current=head;
+			while(current != null) {
+				if(((Contact)current.data).getPhoneNumber().equals(number))
+					return ((Contact)current.data);
+				
+				current=current.next;}
+
+			return null;
+		}
+//----------------------------------------------------------------------------------
+		public linkedlist<T> search_email(){
+			linkedlist LL_email= new linkedlist();
+				System.out.println("Enter the E-mail: ");
+				String email= input.next();
+				current=head;
+				
+				while(current != null) {
+					if(((Contact) current.data).getEmailAddress().equals(email)) 
+						LL_email.add(current.data);
+					
+					current=current.next;
+				 
+					}return LL_email;
+		}
+			
+//-------------------------------------------------------------------------
+			public linkedlist<T> search_address(){
+				linkedlist LL_address= new linkedlist();
+				System.out.println("Enter the Address: ");
+				String address= input.next();
+				current=head;
+				
+				while(current != null) {
+					if(((Contact) current.data).getAddress().equals(address)) 
+						LL_address.add(current.data);
+						
+					current=current.next;
+				
+				}return LL_address;
+				}
+			
+//-----------------------------------------------------------------	
+			public linkedlist<T> search_birthday(){
+				linkedlist LL_birthday= new linkedlist();
+				System.out.println("Enter the birthday: ");
+				String birthday= input.next();
+				current=head;
+				
+				while(current!= null) {
+					//Node<T> tmp = current;
+					//Contact temp1 = ((Contact) tmp.data);
+					if (((Contact) current.data).getBirthday().equals(birthday)) 
+						LL_birthday.add(current.data);
+						
+					current=current.next;
+						
+			}
+				return LL_birthday;
+			}	
+	} 
 		
 		
