@@ -8,6 +8,7 @@ public class  linkedlist<T> implements List<T>{
 		Scanner input = new Scanner(System.in);
 
 		public Node<T>head;  
+<<<<<<< HEAD
 		public Node<T>current;  
 		private int size;
 		
@@ -15,9 +16,26 @@ public class  linkedlist<T> implements List<T>{
 
 		public linkedlist() { 
 			size=0;
+=======
+		public Node<T>current;  
+		int size;
+		
+		public linkedlist() { 
+			size=0;
+>>>>>>> branch 'main' of https://github.com/DanaSamah/CSC212-FINAL1.git
 		head=current=null; 
 		} 
+		public int size() {
+			Node<T> temp=head;
+			int count=0;
 		
+			if(head==null) {
+				return 0;
+			}
+			else { while(temp.next!=null) {
+				count++;
+				temp=temp.next;}}
+			return count;}
 		
 		public boolean empty() { 
 		return head==null;//1 
@@ -47,16 +65,19 @@ public class  linkedlist<T> implements List<T>{
 		current.data=val; 
 		}
 
-public boolean exist(T E) {
+public boolean notexist(T E) {
 	if(empty())
 		return false;
 	findFirst();
-	Contact e =((Contact)E);
+	//Contact e =((Contact)E);
+	T a = current.data; 
 	while (current!= null) {
-		Contact a =((Contact)current.data);
+		//Contact a =((Contact)current.data);
 	
-	if(a.getName().equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
+	//if(a..equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
+		if(a.equals(E)) {
 		System.out.print("the contact is already exist " + "\n");
+		return true;
 		 }
 		findNext();
 	}
@@ -68,7 +89,7 @@ public boolean exist(T E) {
 		
 			return false;	
 	}
-		public void add(T Con) {
+		/*public void add(T Con) {
 		Node<T> con = new Node(Con); 
 		Contact CastCon = ((Contact)con.data);
 		if(!(exist(Con)))
@@ -97,7 +118,7 @@ public boolean exist(T E) {
 		}//end while
 		}
 		} 
-		}//end add
+		}//end add*/
 		
 
 		
@@ -116,23 +137,42 @@ public boolean exist(T E) {
 		else {//3-Contact is in the middle
 			 findFirst();
 			 Node<T> temp=head;
+
 				 for(int i=0;i<=size;i++) {
 						if(temp==current ) {
+		 while(current.next!=null) {
+						if(((Contact) current.getData()).getName().equals(name)) {
+
 							temp.setNext(current.getNext());
 							System.out.println("Contact has deleted!");
-							
+
+						
 								return;
 		
 								}
 						else {
 							temp=current;
 							current=current.getNext();}}
+
 				}
+
+				if( last()){// 4-Contact is the last one
+					 Node<T> L=head;
+					   for(int i=0; i<size;i++) {
+						  L=L.getNext();
+						  }
+					 L.setNext(null);
+					 size--;
+						  }}
+			
+				 
+			 }
+
 			System.out.println("Can't found the name to delete");
 		}}
 		
 		//search 
-		public Contact search_name() {
+		/*public Contact search_name() {
 			System.out.println("Enter the name: ");
 			String name= input.next();
 			current=head;
@@ -194,7 +234,7 @@ public boolean exist(T E) {
 //-----------------------------------------------------------------	
 			public linkedlist<T> search_birthday(){
 				linkedlist LL_birthday= new linkedlist();
-				System.out.println("Enter the birthday: ");
+				System.out.println("Enter the birthday:   ");
 				String birthday= input.next();
 				current=head;
 				
@@ -282,13 +322,13 @@ public boolean exist(T E) {
 						LL_birthday.add(tmp);}
 			}
 				return LL_birthday;
-			}/*
+			}*/
 //-----------------------------------------------------------------
-			@Override
+			/*@Override
 			public Contact search() {
 				// TODO Auto-generated method stub
 				return null;
-			}
+			}*/
 			
 			/*public Contact searchname(String n){
 				if(empty())
