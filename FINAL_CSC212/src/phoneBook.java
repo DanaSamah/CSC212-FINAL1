@@ -38,15 +38,15 @@
 				i = input.nextInt();
 				switch(i) { //another switch for search
 					case 1: //by name
-						contact.search_name();
+						search_name();
 						break;
 						
 					case 2: //phone
-						contact.search_phone();
+						search_phone();
 						break;
 			
 					case 3: //email
-						contact.search_email();
+						search_email();
 						/*linkedlist<Contact> a2 = a1.search_email();
 						a2.current=a2.head;
 						while (a2.current != null) {
@@ -56,11 +56,11 @@
 						break;
 						
 					case 4: //address
-						contact.search_address();
+						search_address();
 						break;
 						
 					case 5: //birthday
-						contact.search_birthday();
+						search_birthday();
 						break;
 						
 					default:

@@ -55,16 +55,19 @@ public class  linkedlist<T> implements List<T>{
 		current.data=val; 
 		}
 
-public boolean exist(T E) {
+public boolean notexist(T E) {
 	if(empty())
 		return false;
 	findFirst();
-	Contact e =((Contact)E);
+	//Contact e =((Contact)E);
+	T a = current.data; 
 	while (current!= null) {
-		Contact a =((Contact)current.data);
+		//Contact a =((Contact)current.data);
 	
-	if(a.getName().equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
+	//if(a..equals(e.getName()) || a.getPhoneNumber().equals(e.getPhoneNumber())) {
+		if(a.equals(E)) {
 		System.out.print("the contact is already exist " + "\n");
+		return true;
 		 }
 		findNext();
 	}
@@ -76,7 +79,7 @@ public boolean exist(T E) {
 		
 			return false;	
 	}
-		public void add(T Con) {
+		/*public void add(T Con) {
 		Node<T> con = new Node(Con); 
 		Contact CastCon = ((Contact)con.data);
 		if(!(exist(Con)))
@@ -105,7 +108,7 @@ public boolean exist(T E) {
 		}//end while
 		}
 		} 
-		}//end add
+		}//end add*/
 		
 
 		
