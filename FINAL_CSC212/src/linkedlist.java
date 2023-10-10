@@ -103,13 +103,11 @@ public boolean exist(T E) {
 		
 				
  public void delete() {
-	System.out.println("Enter name to delete from contact:");
-	String name=input.next();
 		if(size==0) {//1-linkedlist is empty
 			System.out.println("the contacts is empty, nothing to delete");
                return;}
 			else {//2- the contact is in the head
-				if(((Contact) head.getData()).getName().equals(name)) {
+				if((head==current)) {
 					head=head.getNext();
 					findFirst();
 					size--;
@@ -118,9 +116,8 @@ public boolean exist(T E) {
 		else {//3-Contact is in the middle
 			 findFirst();
 			 Node<T> temp=head;
-			 T data=current.getData();
 				 for(int i=0;i<=size;i++) {
-						if( current.getData.getName.equals(name)) {
+						if(temp==current ) {
 							temp.setNext(current.getNext());
 							System.out.println("Contact has deleted!");
 							
