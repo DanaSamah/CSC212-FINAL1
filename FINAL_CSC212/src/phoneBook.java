@@ -1,7 +1,10 @@
 	import java.util.LinkedList;
 	import java.util.Scanner;
 	public class phoneBook {
+		
 		static Scanner input = new Scanner(System.in);
+		static linkedlist<Contact> contact = new linkedlist<Contact>();
+		
 		public static void main(String args[]) {
 			System.out.println("Please choose an option:\r\n"
 			+ "1. Add a contact\r\n"
@@ -17,9 +20,11 @@
 			int x;
 			do{
 			x=input.nextInt();
-			linkedlist<Contact> a1 = new linkedlist<Contact>();
+			//linkedlist<Contact> a1 = new linkedlist<Contact>();
 			switch(x) {
 			case 1:
+				addContact();
+				
 			//add cotact
 			break;
 			case 2:
@@ -35,38 +40,29 @@
 				i = input.nextInt();
 				switch(i) { //another switch for search
 					case 1: //by name
-						System.out.println(a1.search_name());
+						search_name();
 						break;
 						
 					case 2: //phone
-						System.out.println(a1.search_phone());
+						search_phone();
 						break;
 			
 					case 3: //email
-						linkedlist<Contact> a2 = a1.search_email();
+						search_email();
+						/*linkedlist<Contact> a2 = a1.search_email();
 						a2.current=a2.head;
 						while (a2.current != null) {
 							System.out.println(a2.retrieve().toString());
 							a2.current = a2.current.next; }
-						//System.out.println(a1.search_email());
+						//System.out.println(a1.search_email());*/
 						break;
 						
 					case 4: //address
-						linkedlist<Contact> a3 = a1.search_address();
-						a3.current=a3.head;
-						while (a3.current != null) {
-							System.out.println(a3.retrieve().toString());
-							a3.current = a3.current.next; }
-						//System.out.println(a1.search_address());
+						search_address();
 						break;
 						
 					case 5: //birthday
-						linkedlist<Contact> a4 = a1.search_address();
-						a4.current=a4.head;
-						while (a4.current != null) {
-							System.out.println(a4.retrieve().toString());
-							a4.current = a4.current.next; }
-						//System.out.println(a1.search_birthday());
+						search_birthday();
 						break;
 						
 					default:
@@ -75,7 +71,8 @@
 				break;
 			
 			case 3:
-			//delete
+				search_name_forDelete();
+				contact.delete();
 			break;
 			case 4:
 			//schedule
@@ -96,90 +93,129 @@
 			break;
 			}
 			}while(y);
-			
-			} 
-		//search 
-		public static Contact search_name() {
+			contact.findFirst();
+			for(int i = 0 ; i<contact.size ; i++) {
+				System.out.println(contact.retrieve().toString());
+				contact.findNext();
+			}
+		}
+		
+	
+//---------------------------------------------------------------------------------
+		public static void search_name() {
 			System.out.println("Enter the name: ");
 			String name= input.next();
-			current=head;
-			while(current != null) {
-				//Node<T> tmp = current;
-			if(((Contact) current.data).getName().equals(name)) {
-				return ((Contact)current.data);}
-				
-			current=current.next;}
+			contact.findFirst();
+			for(int i=0 ; i< contact.size ; i++) {
+				if(contact.retrieve().getName().equalsIgnoreCase(name)) {
+					System.out.println("Contact Found ");
+					System.out.println(contact.retrieve().toString());
 
-			return null;
+					}contact.findNext();
+				}
 		}	
 //---------------------------------------------------------------------
-		public Contact search_phone() {
+		public static void search_phone() {
 			
 			System.out.println("Enter the phone number: ");
 			String number= input.next();
-			current=head;
-			while(current != null) {
-				if(((Contact)current.data).getPhoneNumber().equals(number))
-					return ((Contact)current.data);
-				
-				current=current.next;}
+			contact.findFirst();
+			for(int i=0 ; i< contact.size ; i++) {
+				if(contact.retrieve().getPhoneNumber().equalsIgnoreCase(number)) {
+					System.out.println("Contact Found ");
+					System.out.println(contact.retrieve().toString());
 
-			return null;
-		}
+					}contact.findNext();
+				}}
+			
 //----------------------------------------------------------------------------------
-		public linkedlist<T> search_email(){
-			linkedlist LL_email= new linkedlist();
+		public static void search_email(){
+			//linkedlist LL_email= new linkedlist();
 				System.out.println("Enter the E-mail: ");
 				String email= input.next();
-				current=head;
-				
-				while(current != null) {
-					if(((Contact) current.data).getEmailAddress().equals(email)) 
-						LL_email.add(current.data);
-					
-					current=current.next;
-				 
-					}return LL_email;
-		}
+				contact.findFirst();
+				for(int i=0 ; i< contact.size ; i++) {
+					if(contact.retrieve().getEmailAddress().equalsIgnoreCase(email)) {
+						System.out.println(contact.retrieve().toString());
+						
+						}contact.findNext();
+					}}
+			
 			
 //-------------------------------------------------------------------------
-			public linkedlist<T> search_address(){
-				linkedlist LL_address= new linkedlist();
+			public static void search_address(){
+				//linkedlist LL_address= new linkedlist();
 				System.out.println("Enter the Address: ");
 				String address= input.next();
-				current=head;
-				
-				while(current != null) {
-					if(((Contact) current.data).getAddress().equals(address)) 
-						LL_address.add(current.data);
+				contact.findFirst();
+				for(int i=0 ; i< contact.size ; i++) {
+					if(contact.retrieve().getAddress().equalsIgnoreCase(address)) {
+						System.out.println(contact.retrieve().toString());
 						
-					current=current.next;
-				
-				}return LL_address;
-				}
+
+						}contact.findNext();
+					}}
 			
 //-----------------------------------------------------------------	
-			public linkedlist<T> search_birthday(){
-				linkedlist LL_birthday= new linkedlist();
-				System.out.println("Enter the birthday: ");
+			public static void search_birthday(){
+				//linkedlist LL_birthday= new linkedlist();
+				System.out.println("Enter the birthday:");
 				String birthday= input.next();
-				current=head;
-				
-				while(current!= null) {
-					//Node<T> tmp = current;
-					//Contact temp1 = ((Contact) tmp.data);
-					if (((Contact) current.data).getBirthday().equals(birthday)) 
-						LL_birthday.add(current.data);
+				contact.findFirst();
+				for(int i=0 ; i<contact.size; i++) {
+					if(contact.retrieve().getBirthday().equalsIgnoreCase(birthday)) {
+						System.out.println(contact.retrieve().toString());
+						//System.out.println(contact.retrieve().toString());
 						
-					current=current.next;
-						
-			}
-				return LL_birthday;
-			
-			
+						}contact.findNext();
 
-		
-	} 
+					}}
+//------------------------------------------------------------------			
+			public static void search_name_forDelete() {
+				System.out.println("Enter the name: ");
+				String name= input.next();
+				contact.findFirst();
+				for(int i=0 ; i< contact.size ; i++) {
+					if(contact.retrieve().getName().equalsIgnoreCase(name)) {
+						return;
+						}
+					contact.findNext();
+					}
+				return; 
+					}
+			
+//-----------------------------------------------------------------------			
+			public static void addContact() {
+				System.out.print("Enter the Contact name: ");
+				String name1=input.next();
+				System.out.print("Enter the contact number: ");
+				String number=input.next();
+				System.out.print("Enter the Contact E-mail address: ");
+				String email=input.next();
+				System.out.print("Enter the Contact address: ");
+				String address=input.next();
+				System.out.print("Enter the Contact Birthday: ");
+				String birthday=input.next();
+				System.out.print("Enter any notes: ");
+				String notes=input.next();
+				Contact con =new Contact(name1,number,email,address,birthday,notes);
+                 contact.findFirst();
+                 for(int i =0 ; i<contact.size ; i++) {
+                	 if (contact.retrieve().getPhoneNumber().compareTo(con.getPhoneNumber()) == 0 ) {
+                		 System.out.println("Contact Found!");
+                		 return;
+                	 }
+                	contact.findNext(); 
+                 }
+				contact.add(con);
+				System.out.print("added"+"\n");
+			}
+			
+			
+			
 }
+	
+	
+	
 		
-		
+
